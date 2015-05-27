@@ -13,6 +13,7 @@ public class Comment {
     private User updateAuthor;
     private DateTime created;
     private DateTime updated;
+    private Visibility visibility;
 
     public DateTime getUpdated() {
         return updated;
@@ -68,5 +69,13 @@ public class Comment {
 
     public void setSelf(String self) {
         this.self = self;
+    }
+
+    public Visibility getVisibility() {
+        return visibility;
+    }
+
+    public void setVisibility(Visibility visibility) {
+        this.visibility = visibility;
     }
 }

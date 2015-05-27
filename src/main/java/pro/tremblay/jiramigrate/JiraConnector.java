@@ -14,9 +14,18 @@ public class JiraConnector extends BaseRestConnector {
         return "/rest/api/2/";
     }
 
+    public List<Issue> getOpenIssues(String project) {
+        String query = "jql=project=" + project + " AND status!=Closed";
+        return getSearchResults(query);
+    }
+
     public List<Issue> getAllIssues(String project) {
         String query = "jql=project=" + project;
         return getSearchResults(query);
+    }
+
+    public Comment addComment(String issueIdOrKey, Comment comment) {
+        return postForObject("issue/" + issueIdOrKey + "/comment", comment, Comment.class);
     }
 
     public Issue getIssue(String id) {
