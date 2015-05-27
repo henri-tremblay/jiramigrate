@@ -29,6 +29,9 @@ public abstract class BaseRestConnector {
         }
 
         private void log(HttpRequest request, byte[] body, ClientHttpResponse response) throws IOException {
+            if(listener == null) {
+                return;
+            }
             String req = request.getURI().toString();
             req = req.substring(serverUrl.length() + getSuffix().length() - 1); // keep only the end
             byte[] res = IOUtils.toByteArray(response.getBody());
@@ -85,6 +88,10 @@ public abstract class BaseRestConnector {
 
     protected <T> T getForObject(String path, Class<T> type, Object... urlVariables) {
         return getRestTemplate().getForObject(serverUrl + getSuffix() + path, type, urlVariables);
+    }
+
+    protected <T> T postForObject(String path, Object request, Class<T> type, Object... urlVariables) {
+        return getRestTemplate().postForObject(serverUrl + getSuffix() + path, request, type, urlVariables);
     }
 
     public void setServerUrl(String serverUrl) {
