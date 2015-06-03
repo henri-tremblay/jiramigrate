@@ -3,11 +3,21 @@ package pro.tremblay.jiramigrate.jira;
 /**
  * @author Henri Tremblay
  */
-public class IssueResolution {
+public class Priority {
+    private String id;
     private String self;
-    private int id;
+    private String statusColor;
     private String description;
+    private String iconUrl;
     private String name;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getSelf() {
         return self;
@@ -17,12 +27,12 @@ public class IssueResolution {
         this.self = self;
     }
 
-    public int getId() {
-        return id;
+    public String getStatusColor() {
+        return statusColor;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setStatusColor(String statusColor) {
+        this.statusColor = statusColor;
     }
 
     public String getDescription() {
@@ -31,6 +41,14 @@ public class IssueResolution {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getIconUrl() {
+        return iconUrl;
+    }
+
+    public void setIconUrl(String iconUrl) {
+        this.iconUrl = iconUrl;
     }
 
     public String getName() {

@@ -1,6 +1,8 @@
 package pro.tremblay.jiramigrate.jira;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.joda.time.LocalDate;
+import pro.tremblay.jiramigrate.util.CustomLocalDateDeserializer;
 
 /**
  * @author Henri Tremblay
@@ -13,8 +15,9 @@ public class Version {
     private String name;
     private boolean archived;
     private boolean released;
+    @JsonDeserialize(using = CustomLocalDateDeserializer.class)
     private LocalDate releaseDate;
-    private LocalDate userReleaseDate;
+    private String userReleaseDate;
     private int projectId;
 
     public String getSelf() {
@@ -73,11 +76,11 @@ public class Version {
         this.releaseDate = releaseDate;
     }
 
-    public LocalDate getUserReleaseDate() {
+    public String getUserReleaseDate() {
         return userReleaseDate;
     }
 
-    public void setUserReleaseDate(LocalDate userReleaseDate) {
+    public void setUserReleaseDate(String userReleaseDate) {
         this.userReleaseDate = userReleaseDate;
     }
 

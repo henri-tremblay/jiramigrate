@@ -31,12 +31,12 @@ public class Export {
             properties.load(in);
         }
 
-        project = properties.getProperty("project");
+        project = properties.getProperty("jira.project");
 
         connector = new JiraConnector();
         connector.setServerUrl("http://jira.codehaus.org/");
-        connector.setLogin(properties.getProperty("login"));
-        connector.setPassword(properties.getProperty("password"));
+        connector.setLogin(properties.getProperty("jira.login"));
+        connector.setPassword(properties.getProperty("jira.password"));
         connector.setListener((req, res) -> {
             req = req.replace('/', '-').replace('?', '_').replace('&', '_').replace('=', '_');
             try {

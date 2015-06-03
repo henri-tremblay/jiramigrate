@@ -6,7 +6,7 @@ package pro.tremblay.jiramigrate.jira;
 public class IssuePriority {
     private String self;
     private String name;
-    private String id;
+    private int id;
 
     public String getSelf() {
         return self;
@@ -24,11 +24,11 @@ public class IssuePriority {
         this.name = name;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 }

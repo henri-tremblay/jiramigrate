@@ -5,7 +5,7 @@ package pro.tremblay.jiramigrate.jira;
  */
 public class Component {
     private String self;
-    private String id;
+    private int id;
     private String name;
     private String description;
     private User lead;
@@ -23,11 +23,11 @@ public class Component {
         this.self = self;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

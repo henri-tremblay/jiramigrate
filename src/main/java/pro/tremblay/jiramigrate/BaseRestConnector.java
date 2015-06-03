@@ -33,7 +33,7 @@ public abstract class BaseRestConnector {
                 return;
             }
             String req = request.getURI().toString();
-            req = req.substring(serverUrl.length() + getSuffix().length() - 1); // keep only the end
+            req = req.substring(serverUrl.length() + (req.contains(getSuffix()) ? getSuffix().length() : 0) - 1); // keep only the end
             byte[] res = IOUtils.toByteArray(response.getBody());
 
             listener.accept(req, res);
@@ -55,6 +55,10 @@ public abstract class BaseRestConnector {
     }
 
     protected abstract String getSuffix();
+
+    protected String getServerUrl() {
+        return serverUrl;
+    }
 
     /**
      * Configure the authentication for the request. The default being basic auth
@@ -92,6 +96,10 @@ public abstract class BaseRestConnector {
 
     protected <T> T postForObject(String path, Object request, Class<T> type, Object... urlVariables) {
         return getRestTemplate().postForObject(serverUrl + getSuffix() + path, request, type, urlVariables);
+    }
+
+    protected void delete(String path, Object... urlVariables) {
+        getRestTemplate().delete(serverUrl + getSuffix() + path, urlVariables);
     }
 
     public void setServerUrl(String serverUrl) {

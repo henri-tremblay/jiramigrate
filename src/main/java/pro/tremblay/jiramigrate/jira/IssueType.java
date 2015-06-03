@@ -5,7 +5,7 @@ package pro.tremblay.jiramigrate.jira;
  */
 public class IssueType {
     private String self;
-    private String id;
+    private int id;
     private String description;
     private String name;
     private boolean subtask;
@@ -18,11 +18,11 @@ public class IssueType {
         this.self = self;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
